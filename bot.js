@@ -719,11 +719,9 @@ client.on('message', async message => {
                                 let bcMessage = new Discord.RichEmbed()
                                 .setTitle(`:loudspeaker: ${a.user.username}`)
                                 .setColor('GREEN')
-                                .addField("**● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●**')
                                 .addField(':pencil: **Sender:**', message.author.username, true)
                                 .addField(':globe_with_meridians: **Server:**', message.guild.name, true)
                                 .addField(':scroll: **Message:**', argsM.replace('[user]', a))
-                                .addField("**● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●**')
                                 .setTimestamp()
                                 .setFooter(message.author.tag, message.author.avatarURL)
                                
@@ -772,11 +770,9 @@ client.on('message', async message => {
                                 let bcMessage = new Discord.RichEmbed()
                                 .setTitle(`:loudspeaker: ${m.user.username}`)
                                 .setColor('GREEN')
-                                .addField("**● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●**')
                                 .addField(':pencil: **Sender:**', message.author.username, true)
                                 .addField(':globe_with_meridians: **Server:**', message.guild.name, true)
                                 .addField(':scroll: **Message:**', argsM.replace('[user]', m))
-                                .addField("**● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●**')
                                 .setTimestamp()
                                 .setFooter(message.author.tag, message.author.avatarURL)
                                
