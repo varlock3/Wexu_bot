@@ -1084,7 +1084,7 @@ client.on('message', message => {
 client.on('message', message => {
   if (true) {
 if (message.content === '!invite') {
-      message.author.send(' رابط البوت | https://discordapp.com/oauth2/authorize?client_id=493764393016754178&permissions=8&scope=bot ').catch(e => console.log(e.stack));
+      message.author.send('https://discordapp.com/oauth2/authorize?client_id=493764393016754178&permissions=813142&scope=bot | رابط البوت ').catch(e => console.log(e.stack));
 
     }
    } 
@@ -2049,27 +2049,12 @@ message.channel.send(embed);
 
 
 client.on('message', message => {
-        if (message.content === "!invite") {
-            if(!message.channel.guild) return;
-        let embed = new Discord.RichEmbed()
-        .setAuthor(` ${message.author.username} `, message.author.avatarURL)      
-        .setTitle(`:small_orange_diamond: اضغط هنا `)
-        .setURL(`https://discordapp.com/api/oauth2/authorize?client_id=466256531998900246&permissions=8&scope=bot`)
-        .setThumbnail(" https://cdn.discordapp.com/avatars/377904849783750667/6c76e412f18c142dfd711d05fb363869.png?size=2048")        
-     message.channel.sendEmbed(embed);
-       }
-   });
-
-
-
-
-client.on('message', message => {
         if (message.content === "!inv") {
             if(!message.channel.guild) return;
         let embed = new Discord.RichEmbed()
         .setAuthor(` ${message.author.username} `, message.author.avatarURL)      
         .setTitle(`:small_orange_diamond: اضغط هنا `)
-        .setURL(`https://discordapp.com/api/oauth2/authorize?client_id=466256531998900246&permissions=8&scope=bot`)
+        .setURL(`https://discordapp.com/oauth2/authorize?client_id=493764393016754178&permissions=8213441331&scope=bot`)
         .setThumbnail(" https://cdn.discordapp.com/avatars/377904849783750667/6c76e412f18c142dfd711d05fb363869.png?size=2048")        
      message.channel.sendEmbed(embed);
        }
@@ -2086,12 +2071,11 @@ client.on('message', message => {
         let embed = new Discord.RichEmbed()
         .setAuthor(` ${message.author.username} `, message.author.avatarURL)      
         .setTitle(`:small_orange_diamond: اضغط هنا `)
-        .setURL(`https://discordapp.com/api/oauth2/authorize?client_id=466256531998900246&permissions=8&scope=bot`)
+        .setURL(`https://discordapp.com/oauth2/authorize?client_id=493764393016754178&permissions=8213441331&scope=bot`)
         .setThumbnail(" https://cdn.discordapp.com/avatars/377904849783750667/6c76e412f18c142dfd711d05fb363869.png?size=2048")        
      message.channel.sendEmbed(embed);
        }
    });
-
 
 
 
@@ -2109,6 +2093,33 @@ client.on ("guildMemberRemove", member => {
 
 
 
+
+
+client.on ("guildMemberAdd", member => {
+  
+   var role = member.guild.roles.find ("name", "member");
+   member.addRole (role);
+  
+})
+
+client.on ("guildMemberRemove", member => {
+   
+})
+
+
+
+
+
+client.on ("guildMemberAdd", member => {
+  
+   var role = member.guild.roles.find ("name", "Member");
+   member.addRole (role);
+  
+})
+
+client.on ("guildMemberRemove", member => {
+   
+})
 
 
 
