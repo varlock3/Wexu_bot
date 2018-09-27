@@ -1656,7 +1656,7 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 
 client.on('message', message => {
 	 var prefix ="!";
- if(message.content.startsWith(prefix +"server")){
+ if(message.content.startsWith(prefix +"server-info")){
 if(!message.channel.guild) return message.reply(' ');
 const millis = new Date().getTime() - message.guild.createdAt.getTime();
 const now = new Date();
@@ -1848,7 +1848,7 @@ client.on('guildMemberAdd', member => {
 
 
 client.on("message", message => {
-	var prefix = "$";
+	var prefix = "!";
 	var args = message.content.split(' ').slice(1); 
 	var msg = message.content.toLowerCase();
 	if( !message.guild ) return;
@@ -1944,7 +1944,7 @@ if (!message.content.startsWith(prefix)) return;
 		if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انت لا تملك صلاحيات !! ").then(msg => msg.delete(5000));
 		if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
 		let user = message.mentions.users.first();
-		let muteRole = message.guild.roles.find("name", "Muted");
+		let muteRole = message.guild.roles.find("name", "» 𝐌uted");
 		if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").then(msg => {msg.delete(5000)});
 		if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').then(msg => {msg.delete(5000)});
 		let reason = message.content.split(" ").slice(2).join(" ");
@@ -1997,7 +1997,6 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return m
 
 
 
-
 client.on('guildCreate', guild => {
   var embed = new Discord.RichEmbed()
   .setColor(0x5500ff)
@@ -2009,7 +2008,7 @@ client.on('guildCreate', guild => {
 
 
 client.on('message' , message => {
-var prefix = "$"
+var prefix = "!"
 
 if (message.author.bot) return;
 if (message.content.startsWith(prefix + "contact")) {
@@ -2033,7 +2032,7 @@ let embed = new Discord.RichEmbed()
      .setAuthor(message.author.username, message.author.avatarURL)
      .setDescription(':mailbox_with_mail: تم ارسال الرسالة الى صاحب البوت بنجاح')
      .setThumbnail(message.author.avatarURL)
-     .setFooter("By : LEGEND_YT#4537 ")
+     .setFooter("By : ImZa1D ")
                                                 
 
 message.channel.send(embed);
