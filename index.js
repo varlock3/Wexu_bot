@@ -2142,7 +2142,6 @@ const youtube = new YouTube(GOOGLE_API_KEY);
 const PREFIX = '!';
 
 const queue = new Map();
-const client = new Discord.Client({disableEveryone: true}); //Heeeeeeeeeeeeeemo
 
 
 
