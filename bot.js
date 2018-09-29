@@ -2131,7 +2131,7 @@ client.on ("guildMemberRemove", member => {
 
 client.on('message', function(message) {
 
-	const myID = "456641975932813345";
+	const myID = "493764393016754178";
 
     let args = message.content.split(" ").slice(1).join(" ");
 
