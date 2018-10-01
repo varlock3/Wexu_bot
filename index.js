@@ -805,32 +805,6 @@ message.author.send(`https://discordapp.com/oauth2/authorize?client_id=${client.
     });
  
  
- const google = require('google-it');
-client.on('message', message => {
- let args = message.content.split(' ').slice(1);
- var prefix ="$"
-    if(message.content.startsWith(prefix + 'sg')) {
-    const input = args.join(' ');
-
-google({ query: input, disableConsole: true }).then(results => {
-    return message.channel.send(`\n\n**Title**: ${results[0].title}\n***Link***: ${results[0].link}\nDescription: ${results[0].snippet}`);
-}).catch(error => {
-    if (error) throw error;
-});
-
-}});
- 
- 
- var prefix = "$";
-
-client.on('message', message => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
   
  
 
@@ -892,31 +866,6 @@ client.on('guildMemberAdd', member => {
     channel.send({embed : embed});
     })
 
-const math = require('math-expression-evaluator');
-const stripIndents = require('common-tags').stripIndents;
-
-client.on('message', msg => {
-  var prefix = "$";
- if (msg.content.startsWith(prefix + 'cal')) {
-    let args = msg.content.split(" ").slice(1);
-        const question = args.join(' ');
-    if (args.length < 1) {
-        msg.reply('حدد معادلة ، من فضلك.');
-} else {    let answer;
-    try {
-        answer = math.eval(question);
-    } catch (err) {
-        msg.reply(`Error: ${err}`);
-    }
-
-    const embed = new Discord.RichEmbed()
-    .addField("**السؤال**: ",`**${question}**`, true)
-    .addField("**الناتج**: ",`**${answer}**`, true)
-    .setFooter("Network_shop حاسبه")
-    msg.channel.send(embed)
-    }
-};
-});
 
 const figlet = require('figlet');
 client.on('message', message => {
