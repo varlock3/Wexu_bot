@@ -2,8 +2,10 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 var prefix = "?"
 
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+ client.user.setActivity("ImZa1D's Orders.",{type: 'LISTENING'})
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -27,6 +29,7 @@ client.on('ready', () => {
   console.log('')
 });
 
+
 //code
 
 client.on("message", message => {
@@ -44,17 +47,7 @@ client.on("message", message => {
 });
 
 
-client.on('ready', () => {
-   console.log(`----------------`);
-      console.log(`Desert Bot- Script By : Diamond Codes`);
-        console.log(`----------------`);
-      console.log(`ON ${client.guilds.size} Servers '     Script By : Diamond Codes ' `);
-    console.log(`----------------`);
-  console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`By ImZa1D | ?help `)//حقوق دايموند كودز
-client.user.setStatus("online")
 
-});
 
 client.on('message', msg => {
   if (msg.content === 'السلام عليكم') {      
@@ -361,7 +354,7 @@ client.on('message', message => {
 });
 client.on('message', message => {
     if(message.content === '?support') {
-        message.channel.send('https://discord.gg/nKUfPST');
+        message.channel.send('Soon !');
     }
 });
 client.on('message', message => {
@@ -622,11 +615,11 @@ client.on("message", message => {
             let args = najzx.content.split(" ").slice(1);
          
             if(!args[0]) {
-              najzx.channel.send("قم بمنشنة الرتبة | +rolebc @everyone الرساله")
+              najzx.channel.send("قم بمنشنة الرتبة | ?rolebc @everyone الرساله")
                 return;
             }
             if(!args[1]) {
-              najzx.channel.send("قم بكتابة الرسالة | +rolebc @everyone الرساله")
+              najzx.channel.send("قم بكتابة الرسالة | ?rolebc @everyone الرساله")
                 return;
             }
          
@@ -1202,6 +1195,41 @@ hours = 12;
   }
  
 });
+
+
+
+
+
+client.on ("guildMemberAdd", member => {
+  
+   var role = member.guild.roles.find ("name", "𝙁𝙞𝙧𝙚𝙭-𝙂𝙪𝙚𝙨𝙩");
+   member.addRole (role);
+  
+})
+
+
+
+client.on ("guildMemberAdd", member => {
+  
+   var role = member.guild.roles.find ("name", "Member");
+   member.addRole (role);
+  
+})
+
+
+
+
+
+
+
+client.on ("guildMemberAdd", member => {
+  
+   var role = member.guild.roles.find ("name", "member");
+   member.addRole (role);
+  
+})
+
+
 
 
 //code
