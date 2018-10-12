@@ -5,7 +5,7 @@ var prefix = "?"
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
- client.user.setActivity("ImZa1D's Orders.",{type: 'LISTENING'})
+ client.user.setActivity("?help | ?inv",{type: 'WATCHING'})
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -227,11 +227,27 @@ client.on('message', message => {
         if (message.content.toLowerCase() === prefix + "inv") {
             if(!message.channel.guild) return;
         let embed = new Discord.RichEmbed()
-        .setTitle(`:small_orange_diamond: Click Here To Invite | أضغط لدعوة البوت :small_orange_diamond: `)
-        .setURL(`https://discordapp.com/api/oauth2/authorize?client_id=491650508231016448&permissions=8&scope=bot`)
+        .setTitle(`:small_orange_diamond: Click Here To Invite :small_orange_diamond: `)
+        .setURL(`https://discordapp.com/oauth2/authorize?client_id=493764393016754178&permissions=21015380078&scope=bot`)
      message.channel.sendEmbed(embed);
        }
    });
+
+
+
+client.on('message', message => {
+        if (message.content.toLowerCase() === prefix + "invite") {
+            if(!message.channel.guild) return;
+        let embed = new Discord.RichEmbed()
+        .setTitle(`:small_orange_diamond: Click Here To Invite :small_orange_diamond: `)
+        .setURL(`https://discordapp.com/oauth2/authorize?client_id=493764393016754178&permissions=21015380078&scope=bot`)
+     message.channel.sendEmbed(embed);
+       }
+   });
+
+
+
+
 client.on('message', function(msg) {
     const prefix = '?'
     if(msg.content.startsWith (prefix  + 'serv2')) {
