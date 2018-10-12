@@ -50,6 +50,7 @@ client.on("message", message => {
 
 
 const cool = [];
+var prefix = "?"
 client.on('message',async message => {
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
