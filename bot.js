@@ -1574,7 +1574,12 @@ client.on ("guildMemberAdd", member => {
 
 
 
-
+client.on ("guildMemberAdd", member => {
+  
+   var role = member.guild.roles.find ("name", "Canon » Member");
+   member.addRole (role);
+  
+})
 
 
 
