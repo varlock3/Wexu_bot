@@ -1029,7 +1029,7 @@ client.on('message', message => {
         .setTitle('Click Here')
         .setURL(`${omar.avatarURL}`)
         .setImage(`${omar.avatarURL}`)
-        .setFooter('BayBot',client.user.avatarURL) 
+        .setFooter('Canon Bot',client.user.avatarURL) 
       message.channel.sendEmbed(embed);
     }
 });
