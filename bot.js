@@ -229,8 +229,8 @@ client.on('message', async message => {
                                         .setColor('GREEN')
                                         .addField('الاسم', name, true)
                                         .addField('العمر', age, true)
-                                        .addField('من وين', fromwhere, true)
-                                        .addField('المهارات وسبب التقديم على الرتبة', fa2dh, true)
+                                        .addField('سبب التقديم', fromwhere, true)
+                                        .addField('المجال', fa2dh, true)
                                         .setTimestamp()
                                         .setFooter(message.guild.name, message.guild.iconURL)
                                        
@@ -313,6 +313,7 @@ client.on('message', msg => {
     msg.channel.send("وعليكـم الســلام ورحمة الله وبركاتـه")
   }
 });
+
 
 client.on('message', message => {
   var prefix = "?"
@@ -773,6 +774,8 @@ client.on('message', msg => {
     msg.reply('ممنوع النشر !!');
   }
 });
+
+
 client.on('message', async msg => {
      client.snek = require('snekfetch');
     var p = "?"
@@ -852,6 +855,8 @@ client.on("guildMemberAdd", member => {
 انت العضو رقم ${member.guild.memberCount} `) 
 }).catch(console.error)
 })
+
+
 client.on('message', message => {
               if (!message.channel.guild) return;
       if(message.content =='?count')
@@ -863,6 +868,8 @@ client.on('message', message => {
       .addField('عدد اعضاء السيرفر',`${message.guild.memberCount}`)
       message.channel.send(SaifDz);
     });
+
+
 client.on("message", message => {
     const prefix = "?"
               
@@ -881,6 +888,7 @@ client.on("message", message => {
    message.channel.send({embed});
       }
   });
+
  client.on('message' , najzx => {
           var prefix = "?";
           if(najzx.author.bot) return;
@@ -931,6 +939,7 @@ client.on("message", message => {
                 najzx.channel.send(`لقد تم ارسال هذه الرسالة الى ${najzx.guild.members.filter(m => m.roles.get(role.id)).size} عضو`)
             }
         });
+
 client.on('message', message => {  
 if (message.author.boss) return;
 var prefix = "?";
@@ -998,6 +1007,8 @@ var unmuteembeddm = new Discord.RichEmbed()
   user.send( unmuteembeddm);
 }
 });
+
+
 client.on('message', message => {
     if (message.content.startsWith("?avatar")) {
         if (message.author.bot) return
@@ -1044,6 +1055,8 @@ client.on('message', message => {
       message.channel.sendEmbed(Embed11)
     }
 });
+
+
 client.on('message',async msg => {
   var p = "?";
   if(msg.content.startsWith(p + "user")) {
