@@ -1235,8 +1235,6 @@ client.on ("guildMemberAdd", member => {
 // LOG --------------------------------------------------------------------------------
 
 const fs = require("fs")
-const prefix = "?"
-
 
 client.on('ready', () => {
     console.log('-------------------------')
