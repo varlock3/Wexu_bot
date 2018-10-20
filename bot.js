@@ -1049,7 +1049,6 @@ client.on('guildCreate', guild => {
   var embed = new Discord.RichEmbed()
   .setColor(0x5500ff)
   .setDescription(`**شكراً لك لإضافه البوت الى سيرفرك**`)
-  .addField(** @itzZa1D ™#8866  مع تحيات صاحب البوت **)
       guild.owner.send(embed)
 });
 
