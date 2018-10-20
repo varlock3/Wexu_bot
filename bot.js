@@ -239,8 +239,8 @@ client.on('message', async message => {
                                                 .setThumbnail(message.author.avatarURL)
                                                 .addField('الاسم', name)
                                                 .addField('العمر', age)
-                                                .addField('من وين', fromwhere)
-                                                .addField('لماذا يريد التقديم', fa2dh)
+                                                .addField('لماذا يريد ان يأخذ هذه الرتبه ؟', fromwhere)
+                                                .addField('؟ (SHOP) ما هو مجاله في السوق', fa2dh)
                                                 .addField('حسابه', message.author)
                                                 .addField('ايدي حسابه', message.author.id, true)
                                                
