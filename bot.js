@@ -1241,23 +1241,6 @@ client.on ("guildMemberAdd", member => {
 
 
 
-client.on("message", message => {
-        if(!message.channel.guild) return;
-    if(message.content.startsWith(prefix + "maintenance")) {
-        if(!message.member.hasPermission("ADMINISTRATOR")) return;
-        let mutedc = message.guild.roles.find(n => n.name === 'Muted');
-            message.guild.channels.forEach(codes => {
-                codes.overwritePermissions(message.guild.id, {
-                    SEND_MESSAGES: false,
-                    READ_MESSAGES: false
-                });
-                codes.overwritePermissions(mutedc.id, {
-                    READ_MESSAGES: false
-                });                         
-            });
-    }
-});
-
 
 
 // MAINTENANCE --------------------------------------------------------------------------------
@@ -1281,36 +1264,7 @@ client.on('message', message => {
 
 
 
-// AUTO ROLE --------------------------------------------------------------------------------
 
-
-
-
-// WARN --------------------------------------------------------------------------------
-
-client.on('message', message => {
-    let log = message.guild.channels.find('name', 'log');
-    let reason = message.content.split(" ").slice(2).join(' ');
-    let p = message.mentions.members.first();
-    if(message.content.startsWith(prefix + "warn")){
-        if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply(`**❌ | This Command is Just for Adminstration**`);
-            message.delete();
-        if(!p) return message.reply(`Mention a User!`);
-        if(reason.length < 1) return message.reply(`Set a reason!`)
-        var embed = new Discord.RichEmbed()
-        .setTitle(`New Warning!`)
-        .addField(`For`, `<@${p.user.id}>`)
-        .addField(`By`, `<@${message.author.id}>`)
-        .addField(`Reason`, reason)
-        .addField(`In Chat`, `<#${message.channel.id}>`)
-        .setColor("WHITE")
-        .setTimestamp()
-        .setFooter(" ")
-            message.channel.send(`${p} ` + reason)
-            message.delete();
-        log.send({embed})
-    }
-});
 
 
 
