@@ -827,63 +827,6 @@ client.on("message", message => {
   
 // Mute --------------------------------------------------------------------------------  
   
-client.on('message', message => {
-    let log = message.client.channels.find('id', '503095766156443659')
-    let reason = message.content.split(" ").slice(2).join(' ');
-    let p = message.mentions.members.first();
-    if (message.author.bot) return;
-    if(!message.channel.guild) return;
-    if(message.content.startsWith(prefix + "mute")){
-        
-        if (!message.member.roles.find('name', 'اسم الرتبة الي لها صلاحية الميوت')) return message.reply('**هذا الأمر مخصص للادارة فقط !**').then(message => message.delete(3000));
-        if(!p) return message.reply(`**ضع منشن للشخص المراد اسكاته**`).then(message => message.delete(3000));
-        if(reason.length < 1) return message.reply(`**ضع صورة تثبت صحة الاسكات**`).then(message => message.delete(3000));
-        if(!reason.includes("prntscr")) return message.reply(`**يجب ان يكون السبب صورة**`).then(message => message.delete(3000));
-        if(p.roles.find('name', 'Muted')) return message.reply('**تم اسكات هذا العضو بالفعل**').then(message => message.delete(3000));
-            
-        p.addRole(message.guild.roles.find("name", "Muted")).then (message.reply('**Done.**'));
-        
-        let embed = new Discord.RichEmbed()
-        .setTitle(`New Mute!`)
-        .addField(`For`, `<@${p.user.id}>`)
-        .addField(`By`, `<@${message.author.id}>`)
-        .addField(`Reason`, reason)
-        .addField(`In Chat`, `<#${message.channel.id}>`)
-        .setColor("#161414")
-        .setTimestamp()
-        .setFooter(" ")
-        
-        message.delete();
-        
-        log.send({embed})
-    }
-if (command == "unmute") {
-if (!message.channel.guild) return;
-if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انتا لا تملك صلاحيات").then(msg => msg.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
-let user = message.mentions.users.first();
-let muteRole = message.guild.roles.find("name", "Muted");
-if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").then(msg => {msg.delete(5000)});
-if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').then(msg => {msg.delete(5000)});
-let reason = message.content.split(" ").slice(2).join(" ");
-message.guild.member(user).removeRole(muteRole);
-const unmuteembed = new Discord.RichEmbed()
-.setColor("RANDOM")
-.setAuthor(`UnMute!`, user.displayAvatarURL)
-.setThumbnail(user.displayAvatarURL)
-.addField("**:busts_in_silhouette:  المستخدم**",  '**[ ' + `${user.tag}` + ' ]**',true)
-.addField("**:hammer:  تم بواسطة **", '**[ ' + `${message.author.tag}` + ' ]**',true)
-.addField("**:book:  السبب**", '**[ ' + `${reason}` + ' ]**',true)
-.addField("User", user, true)  
-message.channel.send({embed : unmuteembed}).then(msg => msg.delete(5000));
-var unmuteembeddm = new Discord.RichEmbed()
-.setDescription(`تم فك الميوت عنك ${user}`)
-.setAuthor(`UnMute!`, user.displayAvatarURL)
-.setColor("RANDOM")
-  user.send( unmuteembeddm);
-}
-});
-
 
 // Link --------------------------------------------------------------------------------
 
@@ -1006,7 +949,7 @@ client.on("message", message => {
       if (message.content.startsWith(prefix + 'report')) {
             let user = message.mentions.users.first();
             let reason = args.slice(1).join(' ');
-            let modlog = client.channels.find('name', 'reports');
+            let modlog = client.channels.find('name', 'log');
             if (!reason) return message.reply('**ضع سبباً مقنعاً**');
               if (message.mentions.users.size < 1) return message.reply('**يجب عليك منشن للعضو المراد الابلاغ عليه**').catch(console.error);
        
@@ -1245,22 +1188,6 @@ client.on ("guildMemberAdd", member => {
 
 // MAINTENANCE --------------------------------------------------------------------------------
 
-
-
-client.on('message', message => {
-  if(message.content.startsWith("#credit <@399697177259147275>","#credits <@399697177259147275>")) {
-    let role = message.guild.roles.find("name", "Canon » Donatour");
-    if(!role) {
-      return message.channel.send('Thanks for your support. ❤');
-    }
-      message.member.addRole(role);
-      let embed = new Discord.RichEmbed()
-        .setColor("RANDOM")
-        .setAuthor("Thanks for you support you have given the Donatour role.");
-
-        message.author.sendEmbed(embed);
-  }
-});
 
 
 
