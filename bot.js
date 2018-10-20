@@ -1315,24 +1315,10 @@ client.on('message', message => {
 
 
 
-// Auto bot Replay  --------------------------------------------------------------------------------
-
-
-client.on('ebnklb',function(ebnklb) {
-    
-    if(ebnklb.content.startsWith("<@493764393016754178>")) {
-        ebnklb.channel.send('Hey Im **Canon Bot !**  A Nice Bot Developed By:`itzZa1D ™#8866`')
-        ebnklb.channel.send('My Prefix `?`')
-
-    }
-});
 
 
 
 // Active --------------------------------------------------------------------------------
-
-const Discord = require("discord.js");
-const client = new Discord.Client();
 const prefix = '?';
 
 client.on('guildMemberAdd', (member) => {
