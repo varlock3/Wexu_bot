@@ -172,7 +172,167 @@ if (command == "embed") {
 // APPEAL --------------------------------------------------------------------------------
 
 
+client.on('message', async rokz => {
 
+    if(rokz.content.startsWith(prefix + "تقديم")) {
+var modRole = rokz.guild.roles.find(r => r.name === 'Canon » Seller');
+
+       
+
+        if(rokz.guild.member(rokz.author).roles.has(modRole.id)) return rokz.channel.send(':x: | معك الرتبة');
+
+
+      let lang = '';
+
+      let time = '';
+
+      let expe = '';
+
+      let fillter = m => m.author.id === rokz.author.id
+
+      await rokz.channel.send(":CanonBotT1:  |  **أكتب إسمك الحقيقية الان**").then(e => {
+
+     rokz.channel.awaitMessages(fillter, { time: 60000, max: 1 })
+
+     .then(co => {
+
+       lang = co.first().content;
+
+        co.first().delete();
+
+
+       e.edit(` :CanonBotT1:  |  ** ؟ (SHOP) ما هو مجالك في السوق** 
+
+[${lang}]`)
+
+       rokz.channel.awaitMessages(fillter, { time: 60000, max: 1 })
+
+       .then(col => {
+
+         time = col.first().content;
+
+          col.first().delete();
+
+
+            e.edit(`:CanonBotT1:  |  **لماذا تريد ان تأخذ هذه الرتبه ؟** 
+
+[${time}]
+
+[${lang}]`)
+
+            rokz.channel.awaitMessages(fillter, { time: 60000, max: 1 })
+
+            .then(coll => {
+
+              expe = coll.first().content;
+
+               coll.first().delete();
+
+
+               e.edit(`جاري تقديمك...
+
+[${expe}]
+
+[${time}]
+
+[${lang}]`)
+
+              let rokzz = rokz.guild.channels.find("name","submissions")
+
+              setTimeout(() => {
+
+                e.edit("تم التقديم")
+
+              }, 3000)
+
+              rokzz.send(`
+
+**${lang}** ``« الأسم``  **✸**
+**${time}** ``« المجال``  **✸**
+**${expe}** ``« لماذا``  **✸**
+
+${rokz.author} « تم التقديم بواسطة **✦**
+`).then(rokzzz => {
+
+                  rokzzz.react(":CheckMark:")
+
+                  rokzzz.react(":WrongMark:")
+
+                })
+
+            })
+
+       })
+
+     })
+
+   })
+
+    }
+
+  })
+
+
+    
+
+    
+client.on('message',async message => {
+
+let mention = message.mentions.members.first();
+
+let Room = client.channels.get('399697177259147275');
+
+if(message.content.startsWith(prefix + "رفض")) {
+
+if(message.guild.id !== '399697177259147275') return;
+
+ if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("**للأسف ليس لديك صلاحية**").then(msg => msg.delete(5000));
+
+
+if(!mention) return message.reply("منشن شخص");
+
+
+
+Room.send(`
+
+
+${mention} ``« العضو``  **✸**
+:CROSS:   | تم الرفض بواسطةالإداره
+:worried: للأسف :worried: `);
+
+}
+
+});
+  
+
+    
+client.on('message',async message => {
+
+let mention = message.mentions.members.first();
+
+let Room = client.channels.get('399697177259147275');
+
+if(message.content.startsWith(prefix + "قبول")) {
+
+if(message.guild.id !== '399697177259147275') return;
+
+ if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("**للأسف ليس لديك صلاحية**").then(msg => msg.delete(5000));
+
+
+if(!mention) return message.reply("منشن شخص");
+
+
+
+Room.send(`
+
+
+${mention} ``« العضو``  **✸**
+:CHEAK:  | تم القبول بواسطه الإداره
+:tada: مبروووك :tada:`);
+
+}
+
+});
 
 
 
@@ -1063,203 +1223,6 @@ client.on ("guildMemberAdd", member => {
   
 })
 
-//---------------------------------------------------------------------------------------------------------------------
-
-
-// LOG --------------------------------------------------------------------------------
-
-
-
-
-// MAINTENANCE --------------------------------------------------------------------------------
-
-
-
-
-
-// MAINTENANCE --------------------------------------------------------------------------------
-
-
-client.on('message', async rokz => {
-
-    if(rokz.content.startsWith(prefix + "تقديم")) {
-var modRole = rokz.guild.roles.find(r => r.name === '- Support');
-
-       
-
-        if(rokz.guild.member(rokz.author).roles.has(modRole.id)) return rokz.channel.send(':x: | معك الرتبة');
-
-
-      let lang = '';
-
-      let time = '';
-
-      let expe = '';
-
-      let fillter = m => m.author.id === rokz.author.id
-
-      await rokz.channel.send(":CanonBotT1:  | **اكتب اسمك الحقيقي الان من فضلك**").then(e => {
-
-     rokz.channel.awaitMessages(fillter, { time: 60000, max: 1 })
-
-     .then(co => {
-
-       lang = co.first().content;
-
-        co.first().delete();
-
-
-       e.edit(`:CanonBotT1: | ** أكتب عمرك الحقيقي ** 
-
-[${lang}]`)
-
-       rokz.channel.awaitMessages(fillter, { time: 60000, max: 1 })
-
-       .then(col => {
-
-         time = col.first().content;
-
-          col.first().delete();
-
-
-            e.edit(`:CanonBotT1: | ** لماذا تريد ان تأخذ هذه الرتبه ؟ ** 
-
-[${time}]
-
-[${lang}]`)
-
-       rokz.channel.awaitMessages(fillter, { time: 60000, max: 1 })
-
-       .then(col => {
-
-         time = col.first().content;
-
-          col.first().delete();
-
-
-            e.edit(`:CanonBotT1: | ** ؟ (SHOP) ما هو مجالك في السوق   ** 
-
-[${shop}]
-
-[${lang}]`)
-
-            rokz.channel.awaitMessages(fillter, { time: 60000, max: 1 })
-
-            .then(coll => {
-
-              expe = coll.first().content;
-
-               coll.first().delete();
-
-
-               e.edit(`جاري تقديمك...
-
-[${expe}]
-
-[${time}]
-
-[${lang}]
-
-[${shop}]`)
-
-              let rokzz = rokz.guild.channels.find("name","submissions")
-
-              setTimeout(() => {
-
-                e.edit("تم التقديم")
-
-              }, 3000)
-
-              rokzz.send(`
-
-» الأسم : **${lang}**
-» العمر : **${time}**
-» لماذا يريد التقديم : **${expe}**
-» المجال : **${expe}**
-
-تم التقديم بواسطة: ${rokz.author}
-`).then(rokzzz => {
-
-                  rokzzz.react(":CHEAK:")
-
-                  rokzzz.react(":CROSS:")
-
-                })
-
-            })
-
-       })
-
-     })
-
-   })
-
-    }
-
-  })
-
- 
-
-    
-
-    
-client.on('message',async message => {
-
-let mention = message.mentions.members.first();
-
-let Room = client.channels.get('399697177259147275');
-
-if(message.content.startsWith(prefix + "رفض")) {
-
-if(message.guild.id !== '399697177259147275') return;
-
- if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("**للأسف ليس لديك صلاحية**").then(msg => msg.delete(5000));
-
-
-if(!mention) return message.reply("منشن شخص");
-
-
-
-Room.send(`
-**» العضو :** ${mention}
-
-[ :x: ] :: لقد تم رفض العضو`);
-
-}
-
-});
-  
-
-    
-client.on('message',async message => {
-
-let mention = message.mentions.members.first();
-
-let Room = client.channels.get('399697177259147275');
-
-if(message.content.startsWith(prefix + "قبول")) {
-
-if(message.guild.id !== '399697177259147275') return;
-
- if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("**للأسف ليس لديك صلاحية**").then(msg => msg.delete(5000));
-
-
-if(!mention) return message.reply("منشن شخص");
-
-
-
-Room.send(`
-**» العضو :** ${mention}
-
-[ :white_check_mark: ] : لقد تم قبول العضو `);
-
-}
-
-});
-
-
-
-///----------------------------------------------------------------------------------
 
 
 
