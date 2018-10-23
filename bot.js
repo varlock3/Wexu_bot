@@ -171,116 +171,7 @@ if (command == "embed") {
 
 // APPEAL --------------------------------------------------------------------------------
 
-client.on('message', async message => {
-    var command = message.content.toLowerCase().split(" ")[0];
-    var prefix = '?';// Alpha Codes
-    var name = '';// Alpha Codes
-    var age = '';// Alpha Codes
-    var fromwhere = '';// Alpha Codes
-    var fa2dh = '';// Alpha Codes
-    var filter = m => m.author.id === message.author.id;// Alpha Codes
-    var subChannel = message.guild.channels.find(c => c.name === '𝐀pplying-𝐀dmins');// Alpha Codes
-   
-    if(command == prefix + 'تقديم') {// Alpha Codes
-        if(message.author.bot) return;
-        if(message.channel.type === 'dm') return;
- 
-        var modRole = message.guild.roles.find(r => r.name === 'Canon » Seller');// Alpha Codes
-       
-        if(message.guild.member(message.author).roles.has(modRole.id)) return message.channel.send(':x: | معك الرتبة');// Alpha Codes
-        if(!subChannel) return message.channel.send(':x: | يجب ان يتوفر روم اسمه `𝐀pplying-𝐀dmins`');// Alpha Codes
-       
-        message.channel.send(':timer: | **اكتب اسمك الحقيقي الان من فضلك**').then(msgS => {
-            message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] }).then(collected => {
-                name = collected.first().content;
-                collected.first().delete();
-                msgS.edit(':timer: | ** أكتب عمرك الحقيقي **').then(msgS => {
-                    message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] }).then(collected => {
-                        age = collected.first().content;
-                        collected.first().delete();
-                        msgS.edit(':timer: | ** لماذا تريد ان تأخذ هذه الرتبه ؟ **').then(msgS => {
-                            message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] }).then(collected => {
-                                fromwhere = collected.first().content;
-                                collected.first().delete();
-                                msgS.edit(':timer: | ** ؟ (SHOP) ما هو مجالك في السوق   **').then(msgS => {
-                                    message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] }).then(collected => {
-                                        fa2dh = collected.first().content;
-                                        collected.first().delete();
-                                       
-                                        let embedS = new Discord.RichEmbed()
-                                        .setAuthor(message.author.tag, message.author.avatarURL)
-                                        .setThumbnail(message.author.avatarURL)
-                                        .setDescription('**\n:no_entry: هل انت متأكد انك تريد التقديم؟**')
-                                        .setColor('GREEN')
-                                        .addField('الاسم', name, true)
-                                        .addField('العمر', age, true)
-                                        .addField('سبب التقديم', fromwhere, true)
-                                        .addField('المجال', fa2dh, true)
-                                        .setTimestamp()
-                                        .setFooter(message.guild.name, message.guild.iconURL)
-                                       
-                                        msgS.delete();
-                                        message.channel.send(embedS).then(msgS => {
-                                            msgS.react('✅').then(() => msgS.react('❎'))
-                                           
-                                            let yesSure = (reaction, user) => reaction.emoji.name === '✅'  && user.id === message.author.id;
-                                            let no = (reaction, user) => reaction.emoji.name === '❎' && user.id === message.author.id;
-                                           
-                                            let yesSend = msgS.createReactionCollector(yesSure);
-                                            let dontSend = msgS.createReactionCollector(no);
-                                           
-                                            yesSend.on('collect', r => {
-                                                msgS.delete();
-                                                message.channel.send(':white_check_mark: | تم تقديم طلبك بنجاح انتظر النتيجة في روم accept-reject').then(msg => msg.delete(5000));
-                                               
-                                                let subMsg = new Discord.RichEmbed()
-                                                .setAuthor(message.author.tag, message.author.avatarURL)
-                                                .setColor('GREEN')
-                                                .setThumbnail(message.author.avatarURL)
-                                                .addField('الاسم', name)
-                                                .addField('العمر', age)
-                                                .addField('لماذا يريد ان يأخذ هذه الرتبه ؟', fromwhere)
-                                                .addField('؟ (SHOP) ما هو مجاله في السوق', fa2dh)
-                                                .addField('حسابه', message.author)
-                                                .addField('ايدي حسابه', message.author.id, true)
-                                               
-                                                subChannel.send(subMsg).then(msgS => {
-                                                    msgS.react('✅').then(() => msgS.react('❎'))
-                                                   
-                                                    let accept = (reaction, user) => reaction.emoji.name === '✅'  && user.id === '399697177259147275'
-                                                    let noAccept = (reaction, user) => reaction.emoji.name === '❎' && user.id === '399697177259147275'
-                                                   
-                                                    let acceptRe = msgS.createReactionCollector(accept);
-                                                    let noAcceptRe = msgS.createReactionCollector(noAccept);
-                                                   
-                                                    acceptRe.on('collect', r => {
-                                                        msgS.delete();
-                                                        message.author.send(`:white_check_mark: | تم قبولك اداري بسيرفر **${message.guild.name}**`);
-                                                        message.guild.member(message.author).addRole(modRole.id);
-                                                        message.guild.channels.find(r => r.name === 'accept-reject').send(`:white_check_mark: | تم قبولك [ <@${message.author.id}> ]`);
-                                                    }).catch();
-                                                    noAcceptRe.on('collect', r => {
-                                                        msgS.delete();
-                                                        message.author.send(`:x: | تم رفضك بسيرفر **${message.guild.name}**`);
-                                                        message.guild.channels.find(r => r.name === 'accept-reject').send(`:x: | تم رفضك [ <@${message.author.id}> ]`);
-                                                    }).catch();
-                                                })
-                                            });// Alpha Codes
-                                            dontSend.on('collect', r => {
-                                                msgS.delete();
-                                                message.channel.send(':x: | تم الغاء تقديمك');// Alpha Codes
-                                            });
-                                        })
-                                    })
-                                })
-                            })
-                        })
-                    })
-                })
-            })
-        })
-    }
-});
+
 
 
 
@@ -1189,9 +1080,251 @@ client.on ("guildMemberAdd", member => {
 // MAINTENANCE --------------------------------------------------------------------------------
 
 
+client.on('message', async rokz => {
+
+    if(rokz.content.startsWith(prefix + "تقديم")) {
+var modRole = rokz.guild.roles.find(r => r.name === '- Support');
+
+       
+
+        if(rokz.guild.member(rokz.author).roles.has(modRole.id)) return rokz.channel.send(':x: | معك الرتبة');
+
+
+      let lang = '';
+
+      let time = '';
+
+      let expe = '';
+
+      let fillter = m => m.author.id === rokz.author.id
+
+      await rokz.channel.send(":CanonBotT1:  | **اكتب اسمك الحقيقي الان من فضلك**").then(e => {
+
+     rokz.channel.awaitMessages(fillter, { time: 60000, max: 1 })
+
+     .then(co => {
+
+       lang = co.first().content;
+
+        co.first().delete();
+
+
+       e.edit(`:CanonBotT1: | ** أكتب عمرك الحقيقي ** 
+
+[${lang}]`)
+
+       rokz.channel.awaitMessages(fillter, { time: 60000, max: 1 })
+
+       .then(col => {
+
+         time = col.first().content;
+
+          col.first().delete();
+
+
+            e.edit(`:CanonBotT1: | ** لماذا تريد ان تأخذ هذه الرتبه ؟ ** 
+
+[${time}]
+
+[${lang}]`)
+
+       rokz.channel.awaitMessages(fillter, { time: 60000, max: 1 })
+
+       .then(col => {
+
+         time = col.first().content;
+
+          col.first().delete();
+
+
+            e.edit(`:CanonBotT1: | ** ؟ (SHOP) ما هو مجالك في السوق   ** 
+
+[${shop}]
+
+[${lang}]`)
+
+            rokz.channel.awaitMessages(fillter, { time: 60000, max: 1 })
+
+            .then(coll => {
+
+              expe = coll.first().content;
+
+               coll.first().delete();
+
+
+               e.edit(`جاري تقديمك...
+
+[${expe}]
+
+[${time}]
+
+[${lang}]
+
+[${shop}]`)
+
+              let rokzz = rokz.guild.channels.find("name","submissions")
+
+              setTimeout(() => {
+
+                e.edit("تم التقديم")
+
+              }, 3000)
+
+              rokzz.send(`
+
+» الأسم : **${lang}**
+» العمر : **${time}**
+» لماذا يريد التقديم : **${expe}**
+» المجال : **${expe}**
+
+تم التقديم بواسطة: ${rokz.author}
+`).then(rokzzz => {
+
+                  rokzzz.react(":CHEAK:")
+
+                  rokzzz.react(":CROSS:")
+
+                })
+
+            })
+
+       })
+
+     })
+
+   })
+
+    }
+
+  })
+
+ 
+
+    
+
+    
+client.on('message',async message => {
+
+let mention = message.mentions.members.first();
+
+let Room = client.channels.get('399697177259147275');
+
+if(message.content.startsWith(prefix + "رفض")) {
+
+if(message.guild.id !== '399697177259147275') return;
+
+ if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("**للأسف ليس لديك صلاحية**").then(msg => msg.delete(5000));
+
+
+if(!mention) return message.reply("منشن شخص");
 
 
 
+Room.send(`
+**» العضو :** ${mention}
+
+[ :x: ] :: لقد تم رفض العضو`);
+
+}
+
+});
+  
+
+    
+client.on('message',async message => {
+
+let mention = message.mentions.members.first();
+
+let Room = client.channels.get('399697177259147275');
+
+if(message.content.startsWith(prefix + "قبول")) {
+
+if(message.guild.id !== '399697177259147275') return;
+
+ if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("**للأسف ليس لديك صلاحية**").then(msg => msg.delete(5000));
+
+
+if(!mention) return message.reply("منشن شخص");
+
+
+
+Room.send(`
+**» العضو :** ${mention}
+
+[ :white_check_mark: ] : لقد تم قبول العضو `);
+
+}
+
+});
+
+
+
+///-----------------------------------------------------------------------------------
+	var prefix = "?";
+client.on("message", (message) => {
+  let men = message.mentions.users.first()
+ 
+  if (message.author.bot) return;
+    if (message.author.id === client.user.id) return;
+    if(!message.channel.guild) return;
+if (message.content.startsWith(prefix + 'credit')) {
+  if(men) {
+    if (!profile[men.id]) profile[men.id] = {
+    lastDaily:'Not Collected',
+    credits: 1,
+  };
+  }
+  if(men) {
+message.channel.send(`** ${men.username}, :credit_card: balance` + " is `" + `${profile[men.id].credits}$` + "`.**")
+} else {
+  message.channel.send(`** ${message.author.username}, your :credit_card: balance` + " is `" + `${profile[message.author.id].credits}$` + "`.**")
+}
+}
+ 
+if(message.content.startsWith(prefix + "daily")) {
+  if(profile[message.author.id].lastDaily != moment().format('day')) {
+    profile[message.author.id].lastDaily = moment().format('day')
+    profile[message.author.id].credits += 200
+     message.channel.send(`**${message.author.username} you collect your \`200\` :dollar: daily pounds**`)
+} else {
+    message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
+}
+  }
+
+ 
+ let cont = message.content.slice(prefix.length).split(" ");
+let args = cont.slice(1);
+let sender = message.author
+if(message.content.startsWith(prefix + 'trans')) {
+          if (!args[0]) {
+            message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
+         return;
+           }
+        // We should also make sure that args[0] is a number
+        if (isNaN(args[0])) {
+            message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
+            return; // Remember to return if you are sending an error message! So the rest of the code doesn't run.
+             }
+            let defineduser = '';
+            let firstMentioned = message.mentions.users.first();
+            defineduser = (firstMentioned)
+            if (!defineduser) return message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
+            var mentionned = message.mentions.users.first();
+if (!profile[sender.id]) profile[sender.id] = {}
+if (!profile[sender.id].credits) profile[sender.id].credits = 200;
+fs.writeFile('profile.json', JSON.stringify(profile), (err) => {
+if (err) console.error(err);
+})
+      var mando = message.mentions.users.id;
+      if  (!profile[defineduser.id]) profile[defineduser.id] = {}
+      if (!profile[defineduser.id].credits) profile[defineduser.id].credits = 200;
+      profile[defineduser.id].credits += (+args[0]);
+      profile[sender.id].credits += (-args[0]);
+      let mariam = message.author.username
+message.channel.send(`**:moneybag: | ${message.author.username}, has transferrerd ` + "`" + args[0] + "$` to " + `<@${defineduser.id}>**`)
+}
+ 
+      });
 
 
 
