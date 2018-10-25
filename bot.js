@@ -191,7 +191,7 @@ client.on('message',async message => {
 
 let mention = message.mentions.members.first();
 
-let Room = client.channels.get('399697177259147275');
+let Room = client.channels.get('502492906544693259');
 
 if(message.content.startsWith(prefix + "رفض")) {
 
@@ -221,7 +221,7 @@ client.on('message',async message => {
 
 let mention = message.mentions.members.first();
 
-let Room = client.channels.get('399697177259147275');
+let Room = client.channels.get('502492906544693259');
 
 if(message.content.startsWith(prefix + "قبول")) {
 
