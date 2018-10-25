@@ -4,7 +4,7 @@ var prefix = "?"
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
- client.user.setActivity("?help | ?inv",{type: 'WATCHING'})
+ client.user.setActivity("?help | ?inv.",{type: 'WATCHING'})
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -27,13 +27,6 @@ client.on('ready', () => {
   console.log('')
   console.log('')
 });
-
-
-
-
-
-
-
 
 
 // BC --------------------------------------------------------------------------------
@@ -246,8 +239,8 @@ client.on('message', async message => {
                                                 .setThumbnail(message.author.avatarURL)
                                                 .addField('الاسم', name)
                                                 .addField('العمر', age)
-                                                .addField('من وين', fromwhere)
-                                                .addField('لماذا يريد التقديم', fa2dh)
+                                                .addField('لماذا يريد ان يأخذ هذه الرتبه ؟', fromwhere)
+                                                .addField('؟ (SHOP) ما هو مجاله في السوق', fa2dh)
                                                 .addField('حسابه', message.author)
                                                 .addField('ايدي حسابه', message.author.id, true)
                                                
@@ -262,11 +255,9 @@ client.on('message', async message => {
                                                    
                                                     acceptRe.on('collect', r => {
                                                         msgS.delete();
-                                                        message.author.send(`:white_check_mark: | تم قبولك بائع في السيرفر **${message.guild.name}**`);
+                                                        message.author.send(`:white_check_mark: | تم قبولك اداري بسيرفر **${message.guild.name}**`);
                                                         message.guild.member(message.author).addRole(modRole.id);
-                                                        message.guild.channels.find(r => r.name === 'accept-reject').send(`${mention} ``« العضو``  **✸**
-:CHEAK:  | تم القبول بواسطه الإداره
-:tada: مبروووك :tada:`);
+                                                        message.guild.channels.find(r => r.name === 'accept-reject').send(`:white_check_mark: | تم قبولك [ <@${message.author.id}> ]`);
                                                     }).catch();
                                                     noAcceptRe.on('collect', r => {
                                                         msgS.delete();
@@ -370,6 +361,7 @@ message.channel.send({embed});
 client.on('message', message => {
     if (message.content === "?helpadmin") {
         let pages = [`**[❖═════اومر ادمن═══════❖]
+		
         ❖ ?kick <mention > ➾  kickلي اعطاء شخص
       
         ❖ ?setvoice  لي انشاء روم فويس اونلاين
@@ -769,6 +761,29 @@ client.on('message', msg => {
   }
 });
 
+client.on('message', msg => {
+  if (msg.content === '.com') {
+   msg.delete(30)
+    msg.reply('ممنوع النشر !!');
+  }
+});
+
+
+client.on('message', msg => {
+  if (msg.content === '.net') {
+   msg.delete(30)
+    msg.reply('ممنوع النشر !!');
+  }
+});
+
+
+client.on('message', msg => {
+  if (msg.content === 'youtube') {
+   msg.delete(30)
+    msg.reply('ممنوع النشر !!');
+  }
+});
+
 
 
 // Create VOice --------------------------------------------------------------------------------
@@ -836,63 +851,6 @@ client.on("message", message => {
   
 // Mute --------------------------------------------------------------------------------  
   
-client.on('message', message => {
-    let log = message.client.channels.find('id', '503095766156443659')
-    let reason = message.content.split(" ").slice(2).join(' ');
-    let p = message.mentions.members.first();
-    if (message.author.bot) return;
-    if(!message.channel.guild) return;
-    if(message.content.startsWith(prefix + "mute")){
-        
-        if (!message.member.roles.find('name', 'اسم الرتبة الي لها صلاحية الميوت')) return message.reply('**هذا الأمر مخصص للادارة فقط !**').then(message => message.delete(3000));
-        if(!p) return message.reply(`**ضع منشن للشخص المراد اسكاته**`).then(message => message.delete(3000));
-        if(reason.length < 1) return message.reply(`**ضع صورة تثبت صحة الاسكات**`).then(message => message.delete(3000));
-        if(!reason.includes("prntscr")) return message.reply(`**يجب ان يكون السبب صورة**`).then(message => message.delete(3000));
-        if(p.roles.find('name', 'Muted')) return message.reply('**تم اسكات هذا العضو بالفعل**').then(message => message.delete(3000));
-            
-        p.addRole(message.guild.roles.find("name", "Muted")).then (message.reply('**Done.**'));
-        
-        let embed = new Discord.RichEmbed()
-        .setTitle(`New Mute!`)
-        .addField(`For`, `<@${p.user.id}>`)
-        .addField(`By`, `<@${message.author.id}>`)
-        .addField(`Reason`, reason)
-        .addField(`In Chat`, `<#${message.channel.id}>`)
-        .setColor("#161414")
-        .setTimestamp()
-        .setFooter(" ")
-        
-        message.delete();
-        
-        log.send({embed})
-    }
-if (command == "unmute") {
-if (!message.channel.guild) return;
-if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انتا لا تملك صلاحيات").then(msg => msg.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
-let user = message.mentions.users.first();
-let muteRole = message.guild.roles.find("name", "Muted");
-if (!muteRole) return message.reply("** لا يوجد رتبة الميوت 'Muted' **").then(msg => {msg.delete(5000)});
-if (message.mentions.users.size < 1) return message.reply('** يجب عليك المنشن اولاً **').then(msg => {msg.delete(5000)});
-let reason = message.content.split(" ").slice(2).join(" ");
-message.guild.member(user).removeRole(muteRole);
-const unmuteembed = new Discord.RichEmbed()
-.setColor("RANDOM")
-.setAuthor(`UnMute!`, user.displayAvatarURL)
-.setThumbnail(user.displayAvatarURL)
-.addField("**:busts_in_silhouette:  المستخدم**",  '**[ ' + `${user.tag}` + ' ]**',true)
-.addField("**:hammer:  تم بواسطة **", '**[ ' + `${message.author.tag}` + ' ]**',true)
-.addField("**:book:  السبب**", '**[ ' + `${reason}` + ' ]**',true)
-.addField("User", user, true)  
-message.channel.send({embed : unmuteembed}).then(msg => msg.delete(5000));
-var unmuteembeddm = new Discord.RichEmbed()
-.setDescription(`تم فك الميوت عنك ${user}`)
-.setAuthor(`UnMute!`, user.displayAvatarURL)
-.setColor("RANDOM")
-  user.send( unmuteembeddm);
-}
-});
-
 
 // Link --------------------------------------------------------------------------------
 
@@ -1015,7 +973,7 @@ client.on("message", message => {
       if (message.content.startsWith(prefix + 'report')) {
             let user = message.mentions.users.first();
             let reason = args.slice(1).join(' ');
-            let modlog = client.channels.find('name', 'reports');
+            let modlog = client.channels.find('name', 'log');
             if (!reason) return message.reply('**ضع سبباً مقنعاً**');
               if (message.mentions.users.size < 1) return message.reply('**يجب عليك منشن للعضو المراد الابلاغ عليه**').catch(console.error);
        
@@ -1058,7 +1016,6 @@ client.on('guildCreate', guild => {
   var embed = new Discord.RichEmbed()
   .setColor(0x5500ff)
   .setDescription(`**شكراً لك لإضافه البوت الى سيرفرك**`)
-  .addField(** @itzZa1D ™#8866  مع تحيات صاحب البوت **)
       guild.owner.send(embed)
 });
 
@@ -1238,206 +1195,6 @@ client.on ("guildMemberAdd", member => {
    member.addRole (role);
   
 })
-
-//---------------------------------------------------------------------------------------------------------------------
-
-
-// LOG --------------------------------------------------------------------------------
-
-
-client.on('ready', () => {
-    console.log('-------------------------')
-    console.log(`✨ Name: ${client.user.username}`)
-    console.log('-------------------------')
-    console.log(`✨ Id: ${client.user.id}`)
-    console.log('-------------------------')
-    console.log(`✨ Prefix: ${prefix}`)
-    console.log('-------------------------')
-    console.log(`✨ Servers: ${client.guilds.size}`)
-    console.log('-------------------------')
-    console.log(`✨ Members: ${client.users.size}`)
-    console.log('-------------------------')
-    console.log(`✨ Channels: ${client.channels.size}`)
-    console.log('-------------------------')
-  })
-  
-client.on('message', msg => {
-    if(msg.content === 'bic') {
-        msg.reply('Hi')
-    }
-})
-
-let lg = JSON.parse(fs.readFileSync('./log.json', 'utf8'))
-
-client.on('message', message => {
-    
-    let newlog = message.content.split(" ").slice(1).join(" ")
-    if(!lg[message.guild.id]) lg[message.guild.id] = {
-        ch: "log"
-    }
-    let lgy = lg[message.guild.id].ch;
-    if(message.content.startsWith(prefix + 'setlog')) {
-        if(!newlog) return message.reply(`${prefix}setlog [Channel name]`)
-     if(!message.guild.channels.find(`name`,newlog)) return message.reply(`I Cant Find This Channel.`)
-        lg[message.guild.id].ch = newlog
-        message.channel.send('**Log Channel has been changed to `' + newlog + '`.**')
-    }
-    fs.writeFile("./log.json", JSON.stringify(lg), (err) => {
-        if (err) console.error(err)
-      });
-
-if(message.content === prefix + 'setlog info') {
-    message.channel.send(`**Log!**
-    **Channel**:${lgy}`)
-}
-
-client.on("roleDelete",  rd => {
-    const channel = rd.guild.channels.find("name", lgy)
-    if(channel) {
-      var embed = new Discord.RichEmbed()
-      .setTitle(` - Role Delete`)
-      .setDescription(`A role has been deleted \n Name : ${rd.name}`)
-      .setColor(`#34495E`)
-         .setTimestamp();
-    channel.sendEmbed(embed)
-    }
-    });        
-
-    client.on("roleCreate",  rc => {
-        const channel = rc.guild.channels.find("name", lgy)
-        if(channel) {
-          var embed = new Discord.RichEmbed()
-          .setTitle(` - Role Create`)
-          .setDescription(`A role Has been created \n Name : ${rc.name}`)
-          .setColor(`#34495E`)
-             .setTimestamp();
-        channel.sendEmbed(embed)
-        }
-        });
-        client.on('messageUpdate', (message, newMessage) => {
-            if (message.content === newMessage.content) return;
-            if (!message || !message.id || !message.content || !message.guild || message.author.bot) return;
-            const channel = message.guild.channels.find('name', lgy);
-            if (!channel) return;
-          
-            let embed = new Discord.RichEmbed()
-               .setAuthor(`${message.author.tag}`, message.author.avatarURL)
-               .setColor('#34495E')
-               .setDescription(`✏ **Message sent by <@${message.author.id}> edited in** <#${message.channel.id}>\n\nOld:\n \${message.cleanContent}\n\nNew:\n ${newMessage.cleanContent}`)
-               .setTimestamp();
-             channel.send({embed:embed});
-          });
-
-          client.on('messageDelete', message => {
-            if (!message || !message.id || !message.content || !message.guild || message.author.bot) return;
-            const channel = message.guild.channels.find('name', lgy);
-            if (!channel) return;
-          
-            let embed = new Discord.RichEmbed()
-               .setAuthor(`${message.author.tag}`, message.author.avatarURL)
-               .setColor('#34495E')
-               .setDescription(`🗑️ **Message sent by <@${message.author.id}> deleted in** <#${message.channel.id}>\n\n \${message.cleanContent}`)
-               .setTimestamp();
-             channel.send({embed:embed});
-          
-          });
-
-          client.on('guildMemberRemove', member => {
-            if (!member || !member.id || !member.guild) return;
-            const guild = member.guild;
-          
-            const channel = member.guild.channels.find('name', lgy);
-            if (!channel) return;
-            let memberavatar = member.user.avatarURL
-            const fromNow = moment(member.joinedTimestamp).fromNow();
-            
-            let embed = new Discord.RichEmbed()
-               .setAuthor(`${member.user.tag}`, member.user.avatarURL)
-             .setThumbnail(memberavatar)
-               .setColor('#34495E')
-               .setDescription(`:outbox_tray: <@${member.user.id}> left the server\n\n Had joined: \n ${fromNow}`)
-               .setTimestamp();
-             channel.send({embed:embed});
-          });
-          // لوق دخول اللاعبين
-          client.on('guildMemberAdd', member => {
-            if (!member || !member.id || !member.guild) return;
-            const guild = member.guild;
-          
-            const channel = member.guild.channels.find('name', lgy);
-            if (!channel) return;
-            let memberavatar = member.user.avatarURL
-            const fromNow = moment(member.user.createdTimestamp).fromNow();
-            const isNew = (new Date() - member.user.createdTimestamp) < 900000 ? '🆕' : '';
-            
-            let embed = new Discord.RichEmbed()
-               .setAuthor(`${member.user.tag}`, member.user.avatarURL)
-             .setThumbnail(memberavatar)
-               .setColor('#34495E')
-               .setDescription(`:inbox_tray: <@${member.user.id}> Joined the server\n\n Created: \n ${fromNow} ${isNew}`)
-               .setTimestamp();
-             channel.send({embed:embed});
-          });
-
-})
-
-
-
-
-
-
-// MAINTENANCE --------------------------------------------------------------------------------
-
-
-
-client.on('message', message => {
-  if(message.content.startsWith("#credit <@399697177259147275>","#credits <@399697177259147275>")) {
-    let role = message.guild.roles.find("name", "Canon » Donatour");
-    if(!role) {
-      return message.channel.send('Thanks for your support. ❤');
-    }
-      message.member.addRole(role);
-      let embed = new Discord.RichEmbed()
-        .setColor("RANDOM")
-        .setAuthor("Thanks for you support you have given the Donatour role.");
-
-        message.author.sendEmbed(embed);
-  }
-});
-
-
-
-
-
-
-// WARN --------------------------------------------------------------------------------
-
-client.on('message', message => {
-    let log = message.guild.channels.find('name', 'log');
-    let reason = message.content.split(" ").slice(2).join(' ');
-    let p = message.mentions.members.first();
-    if(message.content.startsWith(prefix + "warn")){
-        if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply(`**❌ | This Command is Just for Adminstration**`);
-            message.delete();
-        if(!p) return message.reply(`Mention a User!`);
-        if(reason.length < 1) return message.reply(`Set a reason!`)
-        var embed = new Discord.RichEmbed()
-        .setTitle(`New Warning!`)
-        .addField(`For`, `<@${p.user.id}>`)
-        .addField(`By`, `<@${message.author.id}>`)
-        .addField(`Reason`, reason)
-        .addField(`In Chat`, `<#${message.channel.id}>`)
-        .setColor("WHITE")
-        .setTimestamp()
-        .setFooter(" ")
-            message.channel.send(`${p} ` + reason)
-            message.delete();
-        log.send({embed})
-    }
-});
-
-
-
 
 
 
