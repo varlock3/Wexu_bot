@@ -1476,6 +1476,7 @@ mentionned.send(` :credit_card: | Transfer Receipt \`\`\`You have received ${arg
 
 
 
+
 // TOKEN --------------------------------------------------------------------------------
 
 
