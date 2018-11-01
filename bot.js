@@ -1490,12 +1490,12 @@ if(message.content.startsWith("?daily")) {
 }
 }
 
-if(message.content.startsWith("?code_d3s_al_as6ora_al7lo_alnar_3la_zby_ant_ya_78er")) {
+if(message.content.startsWith("?coded3s")) {
 
 
   if(profile[message.author.id].lastDaily != moment().format('day')) {
    profile[message.author.id].lastDaily = moment().format('day')
-   profile[message.author.id].credits += 310
+   profile[message.author.id].credits += 31001987654
     message.channel.send(`**${message.author.username} you collect your \`310\` :dollar: Credits**`)
 }
 	
@@ -1592,4 +1592,3 @@ Dat = currentTime.getDate()
 
 
 client.login(process.env.BOT_TOKEN);
-
