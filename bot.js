@@ -1563,7 +1563,7 @@ client.on('message',async msg => {
   if(msg.content.startsWith(p + "mem")) {
   if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('❌ **go play minecraft**');
   if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
-  msg.guild.createChannel(`يتم تحضير الروم :[]` , 'voice').then(time => {
+  msg.guild.createChannel(`Members : ◤ → ${guild.users.size} ← ◢` , 'voice').then(time => {
     time.overwritePermissions(msg.guild.id, {
       CONNECT: false,
       SPEAK: false
