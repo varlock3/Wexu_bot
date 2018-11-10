@@ -221,17 +221,6 @@ omar.reply("`تم حذف جميع الرتب بنجاح`")
 
 
 
-client.on('message', message => {
-        if (message.content.startWith(prefix + "unban all")){
-    if(!message.channel.guild) return;
-     message.guild.members.forEach( member => {
-         
-         member.unban()
-     })
-}
-});
-
-
 
 
 
