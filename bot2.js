@@ -70,7 +70,35 @@ client.on('ready', () => {
         })
 
 
+client.on('message', msg => {
+  if(msg.content === 'السلام')
+  msg.reply('وعليكم السلام و رحمه الله و بركاته')
+});
 
+client.on('message', msg => {
+  if(msg.content === 'صباح الخير')
+  msg.reply('صباح الورد <3')
+});
+
+client.on('message', msg => {
+  if(msg.content === 'تصبحوا على خير')
+  msg.reply('و انت من أهلوا')
+});
+
+client.on('message', msg => {
+  if(msg.content === 'باك')
+  msg.reply('ولكم')
+});
+
+client.on('message', msg => {
+  if(msg.content === 'انا هنا')
+  msg.reply('حياك')
+});
+
+client.on('message', msg => {
+  if(msg.content === 'مسح')
+  msg.reply('!clear')
+});
 
 
 
