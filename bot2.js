@@ -347,7 +347,7 @@ client.on("message", async message => {
         // if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply("**Sorry, you don't have permission to use this!**");
         
  
-        if(message.author.id != " حط الاي دي حقك هنااااا ") return message.reply("**Sorry, you don't have permission to use this!**");/* لو سمحت حط الايدي حقك*/
+        if(message.author.id != "399697177259147275") return message.reply("**Sorry, you don't have permission to use this!**");/* لو سمحت حط الايدي حقك*/
 
         
         if(!args[0] || args[1]) return message.reply(`**${prefix}leave <guild_id>**`);
