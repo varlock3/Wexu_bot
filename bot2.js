@@ -238,19 +238,19 @@ client.on('message', message => {
 
 client.on("ready", async  => {
 setInterval(function(){
-client.channels.find('510891113784016911', 'ChannelID').setName("「");
-client.channels.find('510891113784016911', 'ChannelID').setName("「 Wel");
-client.channels.find('510891113784016911', 'ChannelID').setName("「 Welco");
-client.channels.find('510891113784016911', 'ChannelID').setName("「 Welcome");
-client.channels.find('510891113784016911', 'ChannelID').setName("「 Welcome To");
-client.channels.find('510891113784016911', 'ChannelID').setName("「 Welcome To A");
-client.channels.find('510891113784016911', 'ChannelID').setName("「 Welcome To Ar");
-client.channels.find('510891113784016911', 'ChannelID').setName("「 Welcome To Ara");
-client.channels.find('510891113784016911', 'ChannelID').setName("「 Welcome To Arab");
-client.channels.find('510891113784016911', 'ChannelID').setName("「 Welcome To Arabs");
-client.channels.find('510891113784016911', 'ChannelID').setName("「 Welcome To Arabs s");
-client.channels.find('510891113784016911', 'ChannelID').setName("「 Welcome To Arabs sh");
-client.channels.find('510891113784016911', 'ChannelID').setName("「 Welcome To Arabs shop 」");
+client.channels.find('510891113784016911', '510891113784016911').setName("「");
+client.channels.find('510891113784016911', '510891113784016911').setName("「 Wel");
+client.channels.find('510891113784016911', '510891113784016911').setName("「 Welco");
+client.channels.find('510891113784016911', '510891113784016911').setName("「 Welcome");
+client.channels.find('510891113784016911', '510891113784016911').setName("「 Welcome To");
+client.channels.find('510891113784016911', '510891113784016911').setName("「 Welcome To A");
+client.channels.find('510891113784016911', '510891113784016911').setName("「 Welcome To Ar");
+client.channels.find('510891113784016911', '510891113784016911').setName("「 Welcome To Ara");
+client.channels.find('510891113784016911', '510891113784016911').setName("「 Welcome To Arab");
+client.channels.find('510891113784016911', '510891113784016911').setName("「 Welcome To Arabs");
+client.channels.find('510891113784016911', '510891113784016911').setName("「 Welcome To Arabs s");
+client.channels.find('510891113784016911', '510891113784016911').setName("「 Welcome To Arabs sh");
+client.channels.find('510891113784016911', '510891113784016911').setName("「 Welcome To Arabs shop 」");
   }, 3000);
 });
 
