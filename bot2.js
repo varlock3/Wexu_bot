@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var prefix = "!" ; // البرفكس
+var prefix = "!" ; /// البرفكس
 
 /// This Version is Unser Maintinance. !
 
@@ -64,12 +64,14 @@ client.on('ready', () => {
             .setColor('#ff0004')
             .setFooter(`==== نــتــمــنــآ لــكــم آســتــمـــتــآع ====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
         
-        var channel =member.guild.channels.find('name', 'welcome')
+        var channel =member.guild.channels.find('name', '✽-welcome')
         if (!channel) return;
         channel.send({embed : embed});
         })
 
 
+		
+		
 client.on('message', msg => {
   if(msg.content === 'السلام')
   msg.reply('وعليكم السلام و رحمه الله و بركاته')
@@ -95,11 +97,6 @@ client.on('message', msg => {
   msg.reply('حياك')
 });
 
-client.on('message', msg => {
-  if(msg.content === 'مسح')
-  msg.reply('!clear')
-});
-
 
 
 		
@@ -115,7 +112,7 @@ client.on ("guildMemberAdd", member => {
 
 client.on ("guildMemberAdd", member => {
   
-   var role = member.guild.roles.find ("name", "✽ Founder");
+   var role = member.guild.roles.find ("name", "✽ Member");
    member.addRole (role);
   
 })
@@ -143,7 +140,7 @@ omar.reply("`تم حذف جميع الرتب بنجاح`")
 });
 
 
-
+/// Rules 
 
 client.on('message', message => {
             if (message.content.startsWith("Rules")) {
@@ -163,7 +160,7 @@ client.on('message', message => {
     }
 });
 
-
+/// !ping 
 
  client.on('message', message => {
     if(!message.channel.guild) return;
@@ -182,7 +179,7 @@ message.channel.send({embed:embed});
 });
 
 
-
+/// !say | !embed 
 
 var prefix = "!";
 
@@ -217,7 +214,7 @@ if (command == "embed") {
 
 
 
-
+/// !server 
 
 client.on('message', function(msg) {
     if(msg.content.startsWith (prefix  + 'server')) {
@@ -279,7 +276,7 @@ omar.reply("`تم حذف جميع الرتب بنجاح`")
 
 
 
-
+/// !رابط
 
 const coolDown = new Set();
 client.on('message', message => {
@@ -321,7 +318,7 @@ client.on('message', message => {
   
   
   
-  
+/// !msg   
   
 client.on("message", msg => {
 var prefix = "!";// البرفكس
@@ -378,7 +375,7 @@ client.on('message', message => {
    
   client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`Arabs Shop | !help`,'https://www.twitch.tv/ImD3s_x');	
+client.user.setGame(`xPro Shop | !help`,'https://www.twitch.tv/ImD3s_x');	
 }); 
    
    
@@ -414,7 +411,7 @@ client.on("message", async message => {
 
 
 
-
+/// !clear 
 
 client.on("message", message => {
               var args = message.content.substring(prefix.length).split(" ");
@@ -491,6 +488,7 @@ client.on('message', ( message ) => {
 });
 
 
+/// !mc | !umc 
 
 client.on('message', message => {
 
@@ -523,7 +521,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__�
 });
 
 
-
+/// !ban 
 
   client.on('message', message => {
   if (message.author.codes) return;
@@ -553,6 +551,7 @@ message.channel.send(`**:white_check_mark: ${user.tag} banned from the server ! 
 }
 });
 
+/// !Kick 
 
 client.on('message', message => {
 const prefix = "!";
@@ -591,7 +590,7 @@ const prefix = "!";
 });
 
 
-
+/// !mute 
 
 client.on('message', async message => {
   let args = message.content.split(" ");
@@ -685,6 +684,7 @@ client.on('message', async message => {
 });
 
 
+/// !unMute 
 
 client.on('message', async message => {
     let mention = message.mentions.members.first();
@@ -715,7 +715,7 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
 });
 
 
-
+/// !new 
 
 client.on("message", (message) => {
     /// ALPHA CODES
@@ -753,9 +753,9 @@ client.on("message", (message) => {
   if (message.content.startsWith("!close")) {
         if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
  
-       message.channel.send(`هل انت متأكد من اقفالك للتذكرة اذا متأكد اكتب $confirm`)
+       message.channel.send(`هل انت متأكد من اقفالك للتذكرة اذا متأكد اكتب !close`)
            .then((m) => {
-               message.channel.awaitMessages(response => response.content === '$confirm', {
+               message.channel.awaitMessages(response => response.content === '!close', {
                        max: 1,
                        time: 10000,
                        errors: ['time'],
@@ -778,43 +778,71 @@ client.on("message", (message) => {
 
 
 
-
+/// !help
 
 client.on('message' , message => {
 if(message.content === '!help') {
   var EsTeKnAN = new Discord.RichEmbed()
   .setColor('RANDOM')
 message.author.send(`
-***__وصف عن البوت__***
-**
-─════════════ {✯ اوامر البوت✯} ════════════─
-❧ !bc ➺ برودكاست ب امبيد وبدون
-❧ !Link ➺ رابط انفايت للسيرفر
-❧ !clear ➺ مسح الشات
-❧ !server ➺ لعرض معلومات السيرفر
-❧ !mc ➺ قفل الشات
-❧ !umc ➺ فتح الشات
-❧ !hacked ➺ لعبة التهكير
-❧ !apply ➺ تقديم / لازم في روم اسمه التقديمات
-❧ !avatar ➺ عرض صورتك او شخص تمنشنه
-❧ !bans ➺ يقولك عدد الاشخاص المبندين من السيرفر
-❧ !ct ➺ انشاء روم كتابي
-❧ !cv ➺ انشاء روم صوتي
-❧ !ban ➺ تبنيد عضو من السيرفر
-❧ !kick ➺ طرد عضو من السيرفر
-❧ !mute ➺ اعطاء ميوت كتابي
-❧ !unmute ➺ فك الميوت الكتابي
-❧ !say ➺ البوت يكرر كلام انته تحدده
-❧ !new ➺ لانشاء تذكرة
-─════════════ {✯ By ♛ ! vM , itzZa1D.#8866  ✯} ════════════─
-**
+╔═══════════════════════╠  xPro Help commands  ╣═══════════════════════
+║
+╠ Help ➺ عرض قائمه المساعده
+║
+╠ Rules ➺ القوانين
+║
+╠ Ping ➺ إظهار سرعه البوت
+║
+╠ Say ➺ إرسال رساله بواسطه البوت
+║
+╠ Embed ➺ إرسال رساله امبيد
+║
+╠ Server ➺ معلومات عن السيرفر
+║
+╠ Link ➺ رابط انفايت للسيرفر
+║
+╠ Msg ➺ إرسال رساله إلى شخص معين بواسطه البوت
+║
+╠ Clear ➺ مسح الشات
+║
+╠ Ban ➺ تبنيد عضو من السيرفر
+║
+╠ Bans ➺ يقولك عدد الاشخاص المبندين من السيرفر
+║
+╠ Kick ➺ طرد عضو من السيرفر
+║ 
+╠ Mute ➺ اعطاء ميوت كتابي
+║
+╠ UnMute ➺ فك الميوت الكتابي
+║
+╠ Hide ➺ إخفاء الروم
+║
+╠ Show ➺ إظهار الروم
+║
+╠ Mc ➺ تقفيل الشات
+║
+╠ Umc ➺ فتح الشات
+║
+╠ New ➺ فتح تذكره
+║
+╠ Close ➺ إقفال التذكره 
+║
+╠ Bc ➺ برودكاست ب امبيد وبدون
+║
+╠ Count ➺ عرض عدد أعضاء السيرفر 
+║
+╠ Members ➺ معلومات الأعضاء
+║
+╠ تقديم ➺ التقديم على بائع في السيرفر
+║
+╚═══════════════════════╠ ✯ By ♛ ! vM , itzZa1D.#8866  ✯ ╣═══════════════════════
 `);
 }
 })
 
 
 
-
+/// !bc 
 
 client.on('message', message => { 
    if(!message.channel.guild) return;
@@ -866,10 +894,10 @@ msg.delete();
 
 
 
-
+/// !Link
 
   client.on('message', message => {
-    if (message.content.startsWith("$Link")) {
+    if (message.content.startsWith("!Link")) {
 
   message.channel.createInvite({
         thing: true,
@@ -887,7 +915,7 @@ message.author.send(`**مدة الرابط : يـوم
     }
 });
 
-
+/// !hack
 
 client.on('message', message => {
     if (message.content.startsWith("!hack")) {
@@ -921,7 +949,8 @@ client.on('message', message => {
          }
  });
 
-
+ 
+/// !bans
 
 client.on('message', message => {
     if (message.content.startsWith("!bans")) {
@@ -933,7 +962,7 @@ client.on('message', message => {
 
 
 
-
+/// !تقديم
 
 client.on('message', async message => {
     var command = message.content.toLowerCase().split(" ")[0];
@@ -1049,7 +1078,7 @@ client.on('message', async message => {
 
 
 
-
+/// !count
 
  client.on('message', message => {
               if (!message.channel.guild) return;
@@ -1063,9 +1092,53 @@ client.on('message', async message => {
       message.channel.send(IzRo);
     });
 
+/// !hide
+
+client.on('message', message => {
+        if(message.content === prefix + "hide") {
+        if(!message.channel.guild) return;
+        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You Dont Have Perms ❌');
+               message.channel.overwritePermissions(message.guild.id, {
+               READ_MESSAGES: false
+   })
+                message.channel.send('Channel Hided Successfully ! ✅  ')
+   }
+  });
+
+/// !show 
+  
+client.on('message', message => {
+        if(message.content === prefix + "show") {
+        if(!message.channel.guild) return;
+        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('❌');
+               message.channel.overwritePermissions(message.guild.id, {
+               READ_MESSAGES: true
+   })
+                message.channel.send('Channel Showen Successfully ! ✅  ')
+   }
+  });
 
 
+/// !members
 
+
+client.on('message', message => {
+                 if (!message.channel.guild) return;
+         if(message.content =='!members')
+         var kayan = new Discord.RichEmbed()
+         .setThumbnail(message.author.avatarURL)
+         .setFooter(message.author.username, message.author.avatarURL)
+         .setTitle('🌷| Members info')
+         .addBlankField(true)
+         .addField('📗| Online',
+         `${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
+         .addField('📕| DND',`${message.guild.members.filter(m=>m.presence.status == 'dnd').size}`)
+         .addField('📙| Idle',`${message.guild.members.filter(m=>m.presence.status == 'idle').size}`)
+         .addField('📓| Offline',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`)
+         .addField('➡| Server Members',`${message.guild.memberCount}`)
+         message.channel.send(kayan);
+
+       });
 
 
 
