@@ -55,7 +55,7 @@ hours = 12;
             if(isNaN(collected.first().content)) return message.channel.send(':heavy_multiplication_x:| **The Time Be Nambers `` Do the Commend Agin``**');
             duration = collected.first().content * 60000;
             collected.first().delete();
-            msg.edit(':eight_pointed_black_star:| **Now send The Present **').then(msg => {
+            msg.edit(':eight_pointed_black_star:| **Now send The Prize **').then(msg => {
               message.channel.awaitMessages(filter, {
                 max: 1,
                 time: 20000,
