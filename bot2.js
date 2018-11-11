@@ -115,7 +115,7 @@ client.on ("guildMemberAdd", member => {
 
 client.on ("guildMemberAdd", member => {
   
-   var role = member.guild.roles.find ("name", "✽ Member");
+   var role = member.guild.roles.find ("name", "✽ Founder");
    member.addRole (role);
   
 })
