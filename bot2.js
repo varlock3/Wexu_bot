@@ -822,7 +822,7 @@ client.on("message", (message) => {
         const reason = message.content.split(" ").slice(1).join(" ");     /// ALPHA CODES
         if (!message.guild.roles.exists("name", "Server Team")) return message.channel.send(`لازم تسوي رتبة اسمها \`Support Team\` وتنطي البوت ادمنيتر حتا يقدر يسوي الرومات ويعدل برمشنات`);
         if (message.guild.channels.exists("name", "ticket-{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// ALPHA CODES
-        message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
+        message.guild.createChannel(`ticket-${message.author.id}`, "text").then(c => {
             let role = message.guild.roles.find("name", "Server Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             c.overwritePermissions(role, {
@@ -879,65 +879,62 @@ client.on("message", (message) => {
 
 /// !help
 
-client.on('message' , message => {
-if(message.content === '!help') {
-  var EsTeKnAN = new Discord.RichEmbed()
-  .setColor('RANDOM')
-message.author.send(`
-╔═══════════════════════╠  xPro Help commands  ╣═══════════════════════
-║
-╠ Help ➺ عرض قائمه المساعده
-║
-╠ Rules ➺ القوانين
-║
-╠ Ping ➺ إظهار سرعه البوت
-║
-╠ Say ➺ إرسال رساله بواسطه البوت
-║
-╠ Embed ➺ إرسال رساله امبيد
-║
-╠ Server ➺ معلومات عن السيرفر
-║
-╠ Link ➺ رابط انفايت للسيرفر
-║
-╠ Msg ➺ إرسال رساله إلى شخص معين بواسطه البوت
-║
-╠ Clear ➺ مسح الشات
-║
-╠ Ban ➺ تبنيد عضو من السيرفر
-║
-╠ Bans ➺ يقولك عدد الاشخاص المبندين من السيرفر
-║
-╠ Kick ➺ طرد عضو من السيرفر
-║ 
-╠ Mute ➺ اعطاء ميوت كتابي
-║
-╠ UnMute ➺ فك الميوت الكتابي
-║
-╠ Hide ➺ إخفاء الروم
-║
-╠ Show ➺ إظهار الروم
-║
-╠ Mc ➺ تقفيل الشات
-║
-╠ Umc ➺ فتح الشات
-║
-╠ New ➺ فتح تذكره
-║
-╠ Close ➺ إقفال التذكره 
-║
-╠ Bc ➺ برودكاست ب امبيد وبدون
-║
-╠ Count ➺ عرض عدد أعضاء السيرفر 
-║
-╠ Members ➺ معلومات الأعضاء
-║
-╠ تقديم ➺ التقديم على بائع في السيرفر
-║
-╚═══════════════════════╠ ✯ By ♛ ! vM , itzZa1D.#8866  ✯ ╣═══════════════════════
-`);
+client.on("message", message => {
+ if (message.content === "!help") {
+  const embed = new Discord.RichEmbed() 
+      .setColor("#ffff00")
+      .setThumbnail(message.author.avatarURL)
+      .setDescription(`
+                                ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+                   💎 『اوامر عامة』 💎
+                        
+💎!Help 『 عرض قائمه المساعده 』                      
+💎!Rules 『 القوانين 』  
+💎!Ping 『 لمعرفه سرعه البوت 』
+💎!Server 『 معلومات عن السيرفر 』
+💎!members 『معلومات عن الاعضاء 』
+💎!Link  『 رابط انفايت للسيرفر 』
+💎!تقديم
+💎!New 『 لفتح تذكره 』
+                                ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+                   👑 『اوامر ادارية』 👑
+👑!bans 『 يقولك عدد الاشخاص المبندين من السيرفر 』
+👑!ban 『 تبنيد عضو من السيرفر 』
+👑!kick 『 طرد عضو من السيرفر 』
+👑!clear 『 لمسح الشات 』
+👑!mute  『 اعطاء ميوت كتابي 』
+👑!unmute  『 فك الميوت الكتابي 』
+👑!Msg  『 إرسال رساله إلى شخص معين بواسطه البوت 』
+👑!Bc  『 برودكاست ب امبيد وبدون 』
+👑!Close  『 إقفال التذكره 』
+👑!g  『 إنشاء قيأ أوي او مسابقه 』
+👑!Mc  『 تقفيل الشات 』
+👑!Umc  『 فتح الشات 』
+👑!Hide  『 إخفاء الروم 』
+👑!Show  『 إظهار الروم 』
+👑!say 『 إرسال رساله بواسطه البوت 』
+👑!embed 『 إرسال رساله امبيد 』
+                                ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+`)
+
+
+message.author.sendEmbed(embed)
+
 }
-})
+});
+
+client.on('message', message => {
+     if (message.content === "!support") {
+     let embed = new Discord.RichEmbed()
+  .setAuthor(message.author.username)
+  .setColor("#9B59B6")
+  .addField(" Done | تــــم" , " |  تــــم ارســالك في الخــاص")
+     
+     
+     
+  message.channel.sendEmbed(embed);
+    }
+});
 
 
 
@@ -1240,6 +1237,40 @@ client.on('message', message => {
        });
 
 
+/// Direct Welcoming
+
+client.on("guildMemberAdd", member => {
+  member.createDM().then(function (channel) {
+  return channel.send(`:rose:  ولكم نورت السيرفر:rose: 
+:crown:اسم العضو  ${member}:crown:  
+انت العضو رقم ${member.guild.memberCount} `) 
+}).catch(console.error)
+})
+
+
+/// !users Room 
+
+client.on('message',async msg => {
+  var p = "!";
+  if(msg.content.startsWith(p + "user")) {
+  if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('❌ **go play minecraft**');
+  if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
+  msg.guild.createChannel(`يتم تحضير الروم :[]` , 'voice').then(time => {
+    time.overwritePermissions(msg.guild.id, {
+      CONNECT: false,
+      SPEAK: false
+    });
+  setInterval(() => {
+      var currentTime = new Date(),
+Year = currentTime.getFullYear(),
+Month = currentTime.getMonth() + 1,
+Dat = currentTime.getDate()
+      time.setName(`Members : ◤ → ${member.guild.memberCount} ← ◢`);
+ },1000);
+  });
+  }
+ 
+});
 
 
 
