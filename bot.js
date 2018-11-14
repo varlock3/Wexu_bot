@@ -158,6 +158,12 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
 });
 
 
+client.on("ready", () => {
+let channel =     client.channels.get("511543388223307787")
+setInterval(function() {
+channel.send(` **Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , VenoVenom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best .Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best .m is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best .Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , Venom is the Best , ** `);
+}, 3000)
+})
 
 
 // AVATAR --------------------------------------------------------------------------------
