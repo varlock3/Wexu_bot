@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var prefix = "?"
+var prefix = "#"
 const fs = require("fs"); 
 const moment = require("moment");  
 const ms = require("ms");
@@ -91,7 +91,7 @@ client.on('message',async message => {
 
 
 client.on('message', async message =>{
-  var prefix = "?";
+  var prefix = "#";
 if (message.author.omar) return;
 if (!message.content.startsWith(prefix)) return;
 if(!message.channel.guild) return message.channel.send('').then(m => m.delete(5000));
@@ -353,7 +353,7 @@ ${mention} ``« العضو``  **✸**
 
 
    client.on("message", message => {
-    const prefix = "?"
+    const prefix = "#"
               
           if(!message.channel.guild) return;
    if(message.author.bot) return;
@@ -377,7 +377,7 @@ ${mention} ``« العضو``  **✸**
 
 
 client.on('message', message => {
-var prefix = "-";
+var prefix = *;
 
     if (message.author.id === client.user.id) return;
     if (message.guild) {
@@ -575,7 +575,7 @@ client.on('message', msg => {
 // ID --------------------------------------------------------------------------------
 
 client.on('message', message => {
-  var prefix = "?"
+  var prefix = "#"
 var args = message.content.split(" ").slice(1);    
 if(message.content.startsWith(prefix + 'id')) {
 var year = message.author.createdAt.getFullYear()
@@ -636,31 +636,31 @@ client.on('message', message => {
     if (message.content === "?helpadmin") {
         let pages = [`**[❖═════اومر ادمن═══════❖]
 		
-        ❖ ?kick <mention > ➾  kickلي اعطاء شخص
+        ❖ #kick <mention > ➾  kickلي اعطاء شخص
       
-        ❖ ?setvoice  لي انشاء روم فويس اونلاين
+        ❖ #setvoice  لي انشاء روم فويس اونلاين
       
-        ❖ ?ban <mention> ➾ لي اعطاء شخص بان
+        ❖ #ban <mention> ➾ لي اعطاء شخص بان
       
-        ❖ ?unban <mention> ➾ لي فك بان عن شخص
+        ❖ #unban <mention> ➾ لي فك بان عن شخص
       
-        ❖ ?mute <mention> ➾ لـ اعطاء ميوت لي شخص
+        ❖ #mute <mention> ➾ لـ اعطاء ميوت لي شخص
       
-        ❖ ?ct <name> ➾ لـ انشاء روم كتبي
+        ❖ #ct <name> ➾ لـ انشاء روم كتبي
       
-        ❖ ?cv <name> ➾لـ انشاء روم صوتي
+        ❖ #cv <name> ➾لـ انشاء روم صوتي
       
-        ❖ ?bc <message>  ➾ لـ ارسال رسالة لي كل الاعضاء
+        ❖ *bc <message>  ➾ لـ ارسال رسالة لي كل الاعضاء
 
-        ❖ ?mc  ➾ لـ اغلاق الشات
+        ❖ #mc  ➾ لـ اغلاق الشات
 
-        ❖ ?unmc  ➾ لـ فتح الشات
+        ❖ #unmc  ➾ لـ فتح الشات
 
-        ❖ ?rolebc  ➾ برود كاست للرتب 
+        ❖ #rolebc  ➾ برود كاست للرتب 
 
-        ❖ ?send  ➾ ارسال رسالة لروم باسم البوت
+        ❖ #send  ➾ ارسال رسالة لروم باسم البوت
 
-        ❖ ?clear  ➾ لـ حذف الشات 
+        ❖ #clear  ➾ لـ حذف الشات 
 
         **`]
         let page = 1;
@@ -808,23 +808,23 @@ if (message.content.startsWith(prefix + 'help')) {
 **
         ***__General orders__***
 **
-『?serv /يعرض لك معلومات عن السيرفر』
-『?serv2 / يعرض لك معلومات عن السيرفر ( الكود الثاني ) للمعلومات』
-『?id / يعرض لك معلومات عنك』
-『?myroles / لرؤية جميع رتبك الشخصية بالسيرفر』
-『?helpadmin / مساعدة الادمن』
-『?id / يعرض لك معلومات عنك』
-『?link / لمعمل انفايت ( دعوة ) لشخص』
-『?inv / لدعوة البوت الى سيرفرك』
-『?support / سيرفر المساعدة』
-『?cmind / لكتابة اي شيء تقوله داخل صورة』
-『?servavatar / لرؤية صورة السيرفر』
-『?count / لرؤية عدد الاعضاء بالسيرفر』
-『?avatar / لرؤية صورة شخص 』
-『?bot-info / لرؤية معلومات عن البوت 』
-『?report / لرفع شكوى على عضو 』
-『?servers / لرؤية عدد السيرفرات التي داخل بها البوت 』
-『?myid / لمعرفة الايدي الخاص بك 』
+『#serv /يعرض لك معلومات عن السيرفر』
+『#serv2 / يعرض لك معلومات عن السيرفر ( الكود الثاني ) للمعلومات』
+『#id / يعرض لك معلومات عنك』
+『#myroles / لرؤية جميع رتبك الشخصية بالسيرفر』
+『#helpadmin / مساعدة الادمن』
+『#id / يعرض لك معلومات عنك』
+『#link / لمعمل انفايت ( دعوة ) لشخص』
+『#inv / لدعوة البوت الى سيرفرك』
+『#support / سيرفر المساعدة』
+『#cmind / لكتابة اي شيء تقوله داخل صورة』
+『#servavatar / لرؤية صورة السيرفر』
+『#count / لرؤية عدد الاعضاء بالسيرفر』
+『#avatar / لرؤية صورة شخص 』
+『#bot-info / لرؤية معلومات عن البوت 』
+『#report / لرفع شكوى على عضو 』
+『#servers / لرؤية عدد السيرفرات التي داخل بها البوت 』
+『#myid / لمعرفة الايدي الخاص بك 』
 
 **
    
@@ -875,7 +875,7 @@ if (message.content.startsWith(prefix + 'help')) {
 // Help done --------------------------------------------------------------------------------
 
 client.on('message', message => {
-    if(message.content === '?help') {
+    if(message.content === '#help') {
         message.reply('تم ارساله بالخاص :white_check_mark: ');
     }
 });
@@ -893,7 +893,7 @@ client.on('message', message => {
 // Kick --------------------------------------------------------------------------------
 
 client.on('message', message => {
-const prefix = "?";
+const prefix = "#";
   if (message.author.kick) return;
   if (!message.content.startsWith(prefix)) return;
  
